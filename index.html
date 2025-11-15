@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>bougie-FAQ-v2</title>
+    <link rel="stylesheet" href="./style.css">
+
+  </head>
+    
+  <body>
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bougie Beach Party Co. – FAQs</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@600;700;800&family=Caudex:wght@700&family=Josefin+Slab:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ========================
+       Tokens – match luxe home
+    =========================*/
+    :root{
+      --brand-gold:#b38538;
+      --brand-blue:#abe2ec;
+      --footer-pink:#FEEFED;
+      --og-dust:#E6C7B4;
+      --ink:#3A2F2A;
+      --muted:#6d6159;
+      --card:#ffffff;
+      --line:rgba(0,0,0,.12);
+      --shadow-soft:0 12px 30px rgba(0,0,0,.12);
+      --shadow-strong:0 18px 40px rgba(0,0,0,.18);
+    }
+
+    *{box-sizing:border-box;}
+
+    body{
+      margin:0;
+      background:var(--footer-pink);
+      font-family:"Poppins",sans-serif;
+      color:var(--ink);
+    }
+
+    .wrap{
+      background:linear-gradient(180deg,var(--og-dust),#f5d8cf,var(--footer-pink));
+      padding-bottom:0;
+      min-height:100vh;
+    }
+    .container{max-width:1180px;margin:0 auto;padding:0 22px;}
+
+    /* Reveal hook (optional) */
+    .reveal{}
+    .reveal.is-in{opacity:1;transform:none;}
+    .reveal{opacity:0;transform:translateY(10px);transition:opacity .4s ease,transform .4s ease;}
+
+    /* ========================
+       Header (simple)
+    =========================*/
+    .site-head{
+      text-align:center;
+      padding:30px 0 10px;
+    }
+    .brand{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:6px;
+    }
+    .brand-tagline{
+      font-size:14px;
+      font-weight:600;
+      color:var(--muted);
+      letter-spacing:.06em;
+      text-transform:uppercase;
+    }
+
+    /* ========================
+       FAQ Hero
+    =========================*/
+    .faq-hero{
+      padding:50px 0 20px;
+    }
+    .faq-hero-inner{
+      border-radius:25px;
+      padding:26px 20px 30px;
+      background:linear-gradient(135deg,rgba(12,60,82,.70),rgba(12,60,82,.55));
+      color:#fff;
+      box-shadow:var(--shadow-strong);
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+    }
+    .faq-hero-inner::after{
+      content:"";
+      position:absolute;
+      inset:auto -80px -80px auto;
+      width:260px;
+      height:260px;
+      border-radius:50%;
+      background:radial-gradient(closest-side,rgba(179,133,56,.5),rgba(179,133,56,0));
+      opacity:.8;
+    }
+
+    .faq-title{
+      font-family:"Raleway",sans-serif;
+      font-size:clamp(30px,4.6vw,42px);
+      font-weight:800;
+      margin:0 0 6px;
+      position:relative;
+      z-index:1;
+    }
+    .faq-subtitle{
+      margin:0 auto 20px;
+      max-width:620px;
+      font-size:clamp(15px,2.2vw,17px);
+      line-height:1.6;
+      color:rgba(255,255,255,.86);
+      position:relative;
+      z-index:1;
+    }
+
+    /* Quick nav chips – blue + gold */
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      justify-content:center;
+      margin-top:10px;
+      position:relative;
+      z-index:1;
+    }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 16px;
+      border-radius:999px;
+      background:var(--brand-blue);
+      border:2px solid #7dbcc8;
+      color:#fff;
+      font-weight:600;
+      font-size:14px;
+      text-decoration:none;
+      box-shadow:0 10px 26px rgba(0,0,0,.35);
+      text-shadow:0 1px 3px rgba(0,0,0,.35);
+      transition:all .2s ease;
+      white-space:nowrap;
+    }
+    .chip:hover{
+      transform:translateY(-2px);
+      filter:brightness(1.06);
+    }
+
+    /* ========================
+       FAQ content section
+    =========================*/
+    .faq-section{
+      padding:40px 0 70px;
+    }
+
+    .faq-grid{
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+    }
+
+    /* Category accordion – rounded cards */
+    details.category{
+      border-radius:22px;
+      background:var(--card);
+      box-shadow:var(--shadow-soft);
+      border:1px solid var(--line);
+      overflow:hidden;
+    }
+    details.category[open]{
+      box-shadow:var(--shadow-strong);
+    }
+
+    summary.category-summary{
+      list-style:none;
+      cursor:pointer;
+      padding:18px 22px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      font-weight:700;
+      font-size:clamp(18px,2.6vw,22px);
+      background:linear-gradient(180deg,#ffffff,#f8f1ea);
+      color:var(--ink);
+    }
+    summary.category-summary::-webkit-details-marker{display:none;}
+
+    .category-label{
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .category-label span.emoji{
+      font-size:22px;
+    }
+
+    .chev{
+      flex:0 0 auto;
+      width:26px;
+      height:26px;
+      border-radius:50%;
+      border:2px solid rgba(0,0,0,.12);
+      display:grid;
+      place-items:center;
+      font-size:15px;
+      color:var(--muted);
+      background:#fff;
+      transition:transform .25s ease,background .25s ease,color .25s ease;
+    }
+    details[open] > summary .chev{
+      transform:rotate(180deg);
+      background:var(--brand-gold);
+      color:#fff;
+      border-color:var(--brand-gold);
+    }
+
+    /* Questions */
+    .faq-list{
+      padding:10px 16px 16px;
+      background:linear-gradient(180deg,#fff,#fef7f1);
+    }
+
+    details.q{
+      border-radius:18px;
+      margin:8px 0;
+      background:#fff;
+      border:1px solid rgba(0,0,0,.08);
+      overflow:hidden;
+    }
+
+    summary.q-summary{
+      list-style:none;
+      cursor:pointer;
+      padding:13px 16px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      justify-content:space-between;
+      font-weight:600;
+      font-size:15px;
+      color:var(--ink);
+    }
+    summary.q-summary::-webkit-details-marker{display:none;}
+
+    .q-title{
+      flex:1;
+    }
+    .q-icon{
+      width:9px;
+      height:9px;
+      border-right:2px solid var(--brand-gold);
+      border-bottom:2px solid var(--brand-gold);
+      transform:rotate(-45deg);
+      transition:transform .2s ease;
+      flex:0 0 auto;
+    }
+    details.q[open] .q-icon{
+      transform:rotate(45deg);
+    }
+
+    .answer{
+      padding:0 16px 14px;
+      color:var(--muted);
+      line-height:1.7;
+      font-size:15.5px;
+    }
+    .answer strong{
+      color:var(--ink);
+      font-weight:700;
+    }
+
+    /* Anchor offset for chip links */
+    .anchor{
+      position:relative;
+      top:-100px;
+      visibility:hidden;
+    }
+
+    /* Motion helpers */
+    details[open] .answer,
+    details[open] .faq-list{
+      animation:fade .25s ease;
+    }
+    @keyframes fade{
+      from{opacity:0;transform:translateY(-2px);}
+      to{opacity:1;transform:none;}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .reveal{opacity:1 !important;transform:none !important;transition:none !important;}
+      .chev,.q-icon,.answer{transition:none !important;animation:none !important;}
+    }
+
+    /* ========================
+       Luxe Footer (from home)
+    =========================*/
+    .bbp-footer{
+      --pink:#FEEFED;
+      --gold:#b38538;
+      --green:#344235;
+      --ink:#111827;
+      --muted:#4b5563;
+      --h:"Caudex", serif;
+      --b:"Josefin Slab", serif;
+      --shadow:0 8px 25px rgba(0,0,0,.08);
+
+      background:var(--pink);
+      color:var(--ink);
+      font-family:var(--b);
+      text-align:center;
+      padding:60px 20px 60px;
+      margin-top:0;
+    }
+
+    .bbp-logo-wrap{
+      position:relative;
+      width:90px;
+      margin:0 auto 14px;
+      filter: drop-shadow(0 2px 0 rgba(0,0,0,.06))
+              drop-shadow(0 0 10px rgba(179,133,56,.12));
+    }
+    .bbp-logo{
+      display:block;
+      width:100%;
+      height:auto;
+      animation:bbp-pulse 4s ease-in-out infinite;
+    }
+    @keyframes bbp-shimmer{
+      0%{transform:translateX(-120%)}
+      100%{transform:translateX(120%)}
+    }
+    @keyframes bbp-pulse{
+      0%,100%{
+        filter: drop-shadow(0 2px 0 rgba(0,0,0,.06))
+                drop-shadow(0 0 8px rgba(179,133,56,.10));
+      }
+      50%{
+        filter: drop-shadow(0 2px 0 rgba(0,0,0,.06))
+                drop-shadow(0 0 16px rgba(179,133,56,.22));
+      }
+    }
+    .bbp-logo-wrap::after{
+      content:"";
+      position:absolute;
+      inset:-4px;
+      pointer-events:none;
+      background:linear-gradient(115deg,
+        rgba(255,255,255,0) 30%,
+        rgba(255,255,255,.85) 50%,
+        rgba(255,255,255,0) 70%);
+      transform:translateX(-120%);
+      mix-blend-mode:screen;
+      opacity:.45;
+      border-radius:14px;
+      animation:bbp-shimmer 5.2s linear infinite;
+    }
+
+    .bbp-name{
+      font-family:var(--h);
+      font-weight:700;
+      font-size:clamp(20px,2.5vw,26px);
+      margin:0 0 10px;
+      color:var(--ink);
+    }
+    .bbp-actions{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-bottom:20px;
+    }
+    .bbp-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      text-decoration:none;
+      font-weight:800;
+      letter-spacing:.02em;
+      padding:10px 16px;
+      border-radius:999px;
+      border:2px solid transparent;
+      font-size:14px;
+      box-shadow:var(--shadow);
+      transition:all .2s ease;
+    }
+    .bbp-btn.primary{
+      background:linear-gradient(180deg,var(--gold),#a97a32);
+      color:#fff;
+    }
+    .bbp-btn.primary:hover{
+      filter:brightness(1.1);
+    }
+    .bbp-btn.alt{
+      background:#fff;
+      color:var(--green);
+      border-color:var(--green);
+    }
+    .bbp-btn.alt:hover{
+      background:var(--gold);
+      color:#fff;
+    }
+
+    .bbp-socials{
+      display:flex;
+      justify-content:center;
+      gap:18px;
+      margin:20px 0;
+    }
+    .bbp-socials a{
+      width:42px;
+      height:42px;
+      background:#fff;
+      border:2px solid var(--gold);
+      border-radius:50%;
+      box-shadow:var(--shadow);
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      transition:.25s;
+    }
+    .bbp-socials a svg{
+      width:20px;
+      height:20px;
+      fill:var(--gold);
+      transition:.25s;
+    }
+    .bbp-socials a:hover{
+      background:var(--gold);
+      transform:translateY(-2px);
+    }
+    .bbp-socials a:hover svg{
+      fill:#fff;
+    }
+    .bbp-bottom{
+      margin-top:20px;
+      font-size:13px;
+      font-weight:600;
+      color:var(--muted);
+    }
+
+    /* ========================
+       Responsive
+    =========================*/
+    @media (max-width:960px){
+      .faq-hero-inner{border-radius:20px;padding:22px 18px 26px;}
+    }
+
+    @media (max-width:640px){
+      .faq-hero{padding-top:34px;}
+      .faq-hero-inner{border-radius:18px;}
+      summary.category-summary{padding:16px 16px;}
+      .faq-list{padding:8px 12px 14px;}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <!-- Simple header (optional) -->
+    <header class="site-head container">
+      <div class="brand">
+        <div class="brand-tagline">Bougie Beach Party Co.</div>
+      </div>
+    </header>
+
+    <!-- Contact Hero -->
+  <section class="contact-hero reveal">
+    <div class="container">
+      <div class="contact-hero-inner">
+        <h1 class="faq-title">Frequently Asked Questions</h1>
+          <p class="contact-subtitle">
+            Answers to the most common questions about booking, weather, setup,
+            movie nights, beach details, and more so you can focus on celebrating.
+          </p>
+
+          
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Content -->
+    <main class="faq-section reveal">
+      <div class="container faq-grid">
+
+        <!-- Booking & Payments -->
+        <span id="cat-booking" class="anchor"></span>
+        <details class="category" open>
+          <summary class="category-summary">
+            <div class="category-label">
+              <span class="emoji">💫</span>
+              <span>Booking &amp; Payments</span>
+            </div>
+            <span class="chev">⌄</span>
+          </summary>
+          <div class="faq-list">
+            <details class="q">
+              <summary class="q-summary">
+                <span class="q-title">How do I book a rental?</span>
+                <span class="q-icon"></span>
+              </summary>
+              <div class="answer">
+                You can reserve right through our RentMy shop! Choose your package, date, and guest count, and we’ll handle the rest. Once your deposit is paid, you’re officially on the calendar.
+              </div>
+            </details>
+
+            <details class="q">
+              <summary class="q-summary">
+                <span class="q-title">Do you require a deposit?</span>
+                <span class="q-icon"></span>
+              </summary>
+              <div class="answer">
+                Yes — a <strong>$50 non-refundable</strong> deposit is required to reserve your event. It’s applied to your total balance.
+              </div>
+            </details>
+
+            <details class="q">
+              <summary class="q-summary">
+                <span class="q-title">When is the rest of my payment due?</span>
+                <span class="q-icon"></span>
+              </summary>
+              <div class="answer">
+                The remaining balance is due <strong>5 days before</strong> your reservation date. If payment isn’t received by then, the reservation may be canceled and the $50 deposit forfeited.
+              </div>
+            </details>
+
+            <details class="q">
+              <summary class="q-summary">
+                <span class="q-title">What if I need to reschedule?</span>
+                <span class="q-icon"></span>
+              </summary>
+              <div class="answer">
+                You can reschedule once and apply your $50 deposit to a new date within <strong>3 months</strong> of your original booking, pending availability.
+              </div>
+            </details>
+
+            <details class="q">
+              <summary class="q-summary">
+                <span class="q-title">Can I make changes after I book?</span>
+                <span class="q-icon"></span>
+              </summary>
+              <div class="answer">
+                You can make changes (adding guests, décor, or switching locations) up to 5 days before your event, pending availability. After that, we lock things in to ensure setup runs smoothly.
+              </div>
+            </details>
+          </div>
+        </details>
+
+        <!-- Weather & Cancellations -->
+        <span id="cat-weather" class="anchor"></span>
+        <details class="category">
+          <summary class="category-summary">
+            <div class="category-label">
+              <span class="emoji">🌦</span>
+              <span>Weather &amp; Cancellations</span>
+            </div>
+            <span class="chev">⌄</span>
+          </summary>
+          <div class="faq-list">
+            <details class="q">
+              <summary class="q-summary">
+                <span class="q-title">What if it rains?</span>
+                <span class="q-icon"></span>
+              </summary>
+              <div class="answer">
+                Welcome to the Oregon Coast! Drizzle, fog, and light wind are part of the charm — we don’t cancel for those. If weather looks truly unsafe (heavy rain, high winds, or coastal warnings), we’ll connect and find a solution together.
+              </div>
+            </details>
+
+            <details class="q">
+              <summary class="q-summary">
+                <span class="q-title">What if you have to cancel because of weather?</span>
+                <span class="q-icon"></span>
+              </summary>
+              <div class="answer">
+                If we decide it’s unsafe to set up and you don’t have an indoor backup space, you may reschedule within 3 months at no charge.
+              </div>
+            </details>
+
+            <details class="q">
+              <summary class="q-summary">
+                <span class="q-title">Can I cancel because of weather?</span>
+                <span class="q-icon"></span>
+              </summary>
+              <div class="answer">
+                You can cancel or reschedule up to 5 days before your event if you’re worried about conditions. The deposit remains non-refundable but can be used toward a future booking.
+              </div>
+            </details>
+
+            <details class="q">
+              <summary class="q-summary">
+                <span class="q-title">Do you set up in high winds?</span>
+                <span class="q-icon"></span>
+              </summary>
+              <div class="answer">
+                Safety first! If winds exceed ~15 mph, we may remove or modify large décor such as domes or umbrellas. Bubble features are case-by-case. We’ll communicate early if it’s an issue.
+              </div>
+            </details>
+          </div>
+        </details>
+
+        <!-- Setup & Delivery -->
+        <span id="cat-setup" class="anchor"></span>
+        <details class="category">
+          <summary class="category-summary">
+            <div class="category-label">
+              <span class="emoji">🚚</span>
+              <span>Setup &amp; Delivery</span>
+            </div>
+            <span class="chev">⌄</span>
+          </summary>
+          <div class="faq-list">
+            <details class="q">
+              <summary class="q-summary">
+                <span class="q-title">Do you deliver?</span>
+                <span class="q-icon"></span>
+              </summary>
+              <div class="answer">
+                Absolutely — delivery and setup are included in every package. We handle the heavy lifting so you can show up and enjoy.
+              </div>
+            </details>
+
+            <details class="q">
+              <summary class="q-summary">
+                <span class="q-title">Where do you deliver?</span>
+                <span class="q-icon"></span>
+              </summary>
+              <div class="answer">
+                We currently serve Lincoln County, Oregon, including Newport, Waldport, Toledo, and Lincoln City.
+              </div>
+            </details>
+
+            <details class="q">
+              <summary class="q-summary">
+                <span class="q-title">Do you charge a delivery fee?</span>
+                <span class="q-icon"></span>
+              </summary>
+              <div class="answer">
+                Delivery fees are calculated at checkout by location — the first 5 miles are free; then $4 per mile after that (up to 25 miles).
+              </div>
+            </details>
+
+            <details class="q">
+              <summary class="q-summary">
+                <span class="q-title">How far onto the beach can you set up?</span>
+                <span class="q-icon"></span>
+              </summary>
+              <div class="answer">
+                We’ll bring everything as close as safely possible from accessible parking. If your chosen spot isn’t reachable, we’ll help you find the best nearby area.
+              </div>
+            </details>
+
+            <details class="q">
+              <summary class="q-summary">
+                <span class="q-title">Do I need a permit?</span>
+                <span class="q-icon"></span>
+              </summary>
+              <div class="answer">
+                For public beaches or parks, please ensure required permits are approved before your event date. We don’t handle permits but we’re happy to point you in the right direction.
+              </div>
+            </details>
+
+            <details class="q">
+              <summary class="q-summary">
+                <span class="q-title">Can my pets be around during setup?</span>
+                <span class="q-icon"></span>
+              </summary>
+              <div class="answer">
+                We love pets — but for safety, please secure them before we arrive. We can’t be responsible for pets getting loose or causing damage while we’re loading equipment.
+              </div>
+            </details>
+          </div>
+        </details>
+
+        <!-- During Your Event -->
+        <span id="cat-during" class="anchor"></span>
+        <details class="category">
+          <summary class="category-summary">
+            <div class="category-label">
+              <span class="emoji">🪩</span>
+              <span>During Your Event</span>
+            </div>
+            <span class="chev">⌄</span>
+          </summary>
+          <div class="faq-list">
+            <details class="q">
+              <summary class="q-summary">
+                <span class="q-title">How long do I get my rental for?</span>
+                <span class="q-icon"></span>
+              </summary>
+              <div class="answer">
+                Each package includes a set rental time (usually 2–4 hours). You can add time when booking or contact us to see if we can extend your setup that day.
+              </div>
+            </details>
+
+            <details class="q">
+              <summary class="q-summary">
+                <span class="q-title">Can I move things around after you leave?</span>
+                <span class="q-icon"></span>
+              </summary>
+              <div class="answer">
+                We prefer everything stays as styled to avoid damage. Small shifts (pillows or chairs) are fine — please don’t drag rugs, move tables, or restyle décor.
+              </div>
+            </details>
+
+            <details class="q">
+              <summary class="q-summary">
+                <span class="q-title">Can I bring my own food or décor?</span>
+                <span class="q-icon"></span>
+              </summary>
+              <div class="answer">
+                Yes! Bring snacks or décor you love; just avoid anything that might stain or damage the setup — no glitter, confetti, or adhesives, please.
+              </div>
+            </details>
+
+            <details class="q">
+              <summary class="q-summary">
+                <span class="q-title">What if we run overtime?</span>
+                <span class="q-icon"></span>
+              </summary>
+              <div class="answer">
+                Unapproved overtime is billed at <strong>$75 for up to 30 minutes</strong>, then hourly after that if available. Ask us early if you’d like to extend.
+              </div>
+            </details>
+
+            <details class="q">
+              <summary class="q-summary">
+                <span class="q-title">What happens if something gets dirty or damaged?</span>
+                <span class="q-icon"></span>
+              </summary>
+              <div class="answer">
+                Small messes happen! Heavily soiled items may incur a $50 cleaning fee. Broken or ruined décor will be billed up to the replacement cost (never more than your total rental).
+              </div>
+            </details>
+
+            <details class="q">
+              <summary class="q-summary">
+                <span class="q-title">Can I smoke near the setup?</span>
+                <span class="q-icon"></span>
+              </summary>
+              <div class="answer">
+                No smoking or open flames in or around the setup. If smoking occurs, a $100 cleaning/damage fee applies — fabrics are tough to deodorize.
+              </div>
+            </details>
+          </div>
+        </details>
+
+        <!-- Movie Night Rentals -->
+        <span id="cat-movie" class="anchor"></span>
+        <details class="category">
+          <summary class="category-summary">
+            <div class="category-label">
+              <span class="emoji">🎬</span>
+              <span>Movie Night Rentals</span>
+            </div>
+            <span class="chev">⌄</span>
+          </summary>
+          <div class="faq-list">
+            <details class="q">
+              <summary class="q-summary">
+                <span class="q-title">Do I need Wi-Fi?</span>
+                <span class="q-icon"></span>
+              </summary>
+              <div class="answer">
+                Yes — you’ll need Wi-Fi to stream movies. We provide the gear; you log into your own accounts (Netflix, Disney+, Prime, etc.).
+              </div>
+            </details>
+
+            <details class="q">
+              <summary class="q-summary">
+                <span class="q-title">Can I use my own device?</span>
+                <span class="q-icon"></span>
+              </summary>
+              <div class="answer">
+                Absolutely! Use your streaming stick or plug a USB with downloaded content directly into the projector.
+              </div>
+            </details>
+
+            <details class="q">
+              <summary class="q-summary">
+                <span class="q-title">Do I have to log out of my accounts?</span>
+                <span class="q-icon"></span>
+              </summary>
+              <div class="answer">
+                Yes, please log out before pickup to keep your information private.
+              </div>
+            </details>
+
+            <details class="q">
+              <summary class="q-summary">
+                <span class="q-title">Can I keep the setup overnight?</span>
+                <span class="q-icon"></span>
+              </summary>
+              <div class="answer">
+                Yes, overnight use is approved on private property. Unplug and store the speaker and projector indoors overnight to protect them.
+              </div>
+            </details>
+
+            <details class="q">
+              <summary class="q-summary">
+                <span class="q-title">Do I need power nearby?</span>
+                <span class="q-icon"></span>
+              </summary>
+              <div class="answer">
+                Yes — please have a grounded outlet within about <strong>20 feet</strong> of the viewing area. We bring a 20-foot outdoor cord and handle the connections.
+              </div>
+            </details>
+
+            <details class="q">
+              <summary class="q-summary">
+                <span class="q-title">What time do you pick up in the morning?</span>
+                <span class="q-icon"></span>
+              </summary>
+              <div class="answer">
+                We usually pick up around 9 AM the next day unless we’ve agreed otherwise.
+              </div>
+            </details>
+          </div>
+        </details>
+
+        <!-- Beach Experience Specifics -->
+        <span id="cat-beach" class="anchor"></span>
+        <details class="category">
+          <summary class="category-summary">
+            <div class="category-label">
+              <span class="emoji">🌊</span>
+              <span>Beach Experience Specifics</span>
+            </div>
+            <span class="chev">⌄</span>
+          </summary>
+          <div class="faq-list">
+            <details class="q">
+              <summary class="q-summary">
+                <span class="q-title">How close to the water do you set up?</span>
+                <span class="q-icon"></span>
+              </summary>
+              <div class="answer">
+                We follow local safety guidelines and typically stay well above the high-tide line. We check tide charts to keep your event safe and dry.
+              </div>
+            </details>
+
+            <details class="q">
+              <summary class="q-summary">
+                <span class="q-title">Do I need to check the tides myself?</span>
+                <span class="q-icon"></span>
+              </summary>
+              <div class="answer">
+                Yes — please double-check tide conditions when picking your time, especially for sunrise/sunset bookings. We’ll confirm them too.
+              </div>
+            </details>
+
+            <details class="q">
+              <summary class="q-summary">
+                <span class="q-title">Do you clean up after?</span>
+                <span class="q-icon"></span>
+              </summary>
+              <div class="answer">
+                We pack up all Bougie Beach items. Please remove personal items and food waste before we arrive — let’s keep Oregon beaches beautiful!
+              </div>
+            </details>
+
+            <details class="q">
+              <summary class="q-summary">
+                <span class="q-title">Can we have candles, sparklers, or a fire pit?</span>
+                <span class="q-icon"></span>
+              </summary>
+              <div class="answer">
+                Sorry, no open flames — it’s not safe and often not permitted. We can add fairy lights and lanterns for a magical glow.
+              </div>
+            </details>
+          </div>
+        </details>
+
+        <!-- After Your Event -->
+        <span id="cat-after" class="anchor"></span>
+        <details class="category">
+          <summary class="category-summary">
+            <div class="category-label">
+              <span class="emoji">🧺</span>
+              <span>After Your Event</span>
+            </div>
+            <span class="chev">⌄</span>
+          </summary>
+          <div class="faq-list">
+            <details class="q">
+              <summary class="q-summary">
+                <span class="q-title">Do I have to be there for pickup?</span>
+                <span class="q-icon"></span>
+              </summary>
+              <div class="answer">
+                Yes — a client or representative over 18 needs to be present during pickup to confirm everything is safe and accounted for.
+              </div>
+            </details>
+
+            <details class="q">
+              <summary class="q-summary">
+                <span class="q-title">What if I have to leave early?</span>
+                <span class="q-icon"></span>
+              </summary>
+              <div class="answer">
+                No worries — let us know ahead of time and we’ll coordinate a pickup plan that works for both of us.
+              </div>
+            </details>
+
+            <details class="q">
+              <summary class="q-summary">
+                <span class="q-title">What if I forget to clean up my food or trash?</span>
+                <span class="q-icon"></span>
+              </summary>
+              <div class="answer">
+                If excessive cleanup is required, a small cleaning charge may apply. A quick tidy before we arrive helps us pack up faster!
+              </div>
+            </details>
+
+            <details class="q">
+              <summary class="q-summary">
+                <span class="q-title">Will you take photos of my setup?</span>
+                <span class="q-icon"></span>
+              </summary>
+              <div class="answer">
+                We often snap a few photos for our portfolio. If you’d rather not be featured, just let us know beforehand.
+              </div>
+            </details>
+          </div>
+        </details>
+
+        <!-- Other Common Questions (placeholder anchor so chip still works) -->
+        <span id="cat-other" class="anchor"></span>
+      </div>
+    </main>
+  </div>
+  <!-- Luxe Footer -->
+  <footer class="bbp-footer" role="contentinfo">
+    <div class="bbp-logo-wrap">
+      <img
+        class="bbp-logo"
+        src="https://raw.githubusercontent.com/GabrielaFiona/bougie-assets/3f8b85245206b18ae4050463b5044ed74ea5782b/sunlogotrans.png"
+        alt="The Bougie Beach Party Co. Sun Logo"
+        width="184"
+        height="136"
+      />
+    </div>
+
+    <h3 class="bbp-name">The Bougie Beach Party Co.</h3>
+
+    <div class="bbp-actions">
+      <a class="bbp-btn primary" href="mailto:thebougiebeachpartyco@gmail.com">💌 Email Us</a>
+      <a class="bbp-btn alt" href="tel:+15413518497">📞 Call / Text (541) 351-8497</a>
+    </div>
+
+    <div class="bbp-socials">
+      <a href="https://www.instagram.com/thebougiebeachpartyco" target="_blank" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M7.75 2C4.126 2 2 4.126 2 7.75v8.5C2 19.874 4.126 22 7.75 22h8.5C19.874 22 22 19.874 22 16.25v-8.5C22 4.126 19.874 2 16.25 2h-8.5zM12 7a5 5 0 1 1 0 10a5 5 0 0 1 0-10zm0 1.75a3.25 3.25 0 1 0 0 6.5a3.25 3.25 0 0 0 0-6.5zM18 6.5a1 1 0 1 1-2 0a1 1 0 0 1 2 0z" /></svg>
+      </a>
+      <a href="https://www.facebook.com/thebougiebeachpartyco" target="_blank" aria-label="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.5 9.87v-7H8v-2.87h2.5v-2.2c0-2.47 1.48-3.83 3.74-3.83c1.08 0 2.2.19 2.2.19v2.4h-1.24c-1.22 0-1.6.76-1.6 1.54v1.9H17l-.4 2.87h-2.5v7A10 10 0 0 0 22 12" /></svg>
+      </a>
+    </div>
+
+    <div class="bbp-bottom">
+      © 2025 The Bougie Beach Party Co. • All rights reserved.
+    </div>
+  </footer>
+
+  <!-- ========================
+       JS – reveal + smooth scroll
+  =========================-->
+  <script>
+    (function(){
+      const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      // Reveal on scroll
+      const targets = document.querySelectorAll(".reveal");
+      if (!prefersReduced && "IntersectionObserver" in window) {
+        const io = new IntersectionObserver((entries)=>{
+          entries.forEach(e=>{
+            if (e.isIntersecting){
+              e.target.classList.add("is-in");
+              io.unobserve(e.target);
+            }
+          });
+        }, { threshold:0.12 });
+
+        targets.forEach(t=>io.observe(t));
+      } else {
+        targets.forEach(t=>t.classList.add("is-in"));
+      }
+
+      // Smooth scroll for in-page anchors (chips, etc.)
+      document.addEventListener("click",(e)=>{
+        const a = e.target.closest('a[href^="#"]');
+        if (!a) return;
+
+        const sel = a.getAttribute("href");
+        if (!sel || sel === "#") return;
+
+        const el = document.querySelector(sel);
+        if (!el) return;
+
+        e.preventDefault();
+        el.scrollIntoView({
+          behavior: prefersReduced ? "auto" : "smooth",
+          block: "start"
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
+    <script  src="./script.js"></script>
+
+  </body>
+  
+</html>
